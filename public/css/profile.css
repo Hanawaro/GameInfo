@@ -1,0 +1,97 @@
+main .container-lg * {
+  color: #333333;
+}
+main .container-lg section {
+  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px 0;
+  border-radius: 4px;
+  margin-top: 16px;
+  background-color: white;
+}
+main .container-lg section .header {
+  cursor: pointer;
+  padding: 28px;
+}
+main .container-lg section .header.collapsed > svg {
+  transform: rotate(-90deg);
+}
+main .container-lg section .header > svg {
+  width: 26px;
+  height: 26px;
+  transition: 0.2s;
+  transform: rotate(0);
+  fill: #b9c6d0;
+}
+main .container-lg section .header div {
+  font-size: 1rem;
+  font-weight: 700;
+}
+main .container-lg section .header div svg {
+  width: 32px;
+  height: 32px;
+  border-radius: 3px;
+  margin-right: 16px;
+}
+main .container-lg section .header .mail svg {
+  background-color: #558cb7;
+}
+main .container-lg section .header .password svg {
+  background-color: #55b7ad;
+}
+main .container-lg section .header .photo svg {
+  fill: #487284;
+}
+main .container-lg section .menu .content {
+  padding: 28px;
+}
+main .container-lg section .menu .content h3 {
+  font-weight: 700;
+  margin-bottom: 57px;
+}
+main .container-lg section .menu .content span {
+  font-weight: 500;
+}
+main .container-lg section .menu .content #fileFeedback {
+  margin: 0 0 24px;
+  color: #e3342f;
+}
+main .container-lg section .menu .content .custom-file.is-invalid label {
+  border-color: #e3342f;
+}
+main .container-lg section .menu .content .custom-file.is-invalid label::after {
+  background-color: #e3342f;
+  color: white;
+}
+main .container-lg section .menu .content .custom-file .custom-file-label {
+  cursor: pointer;
+  border-radius: 0;
+  margin: 0;
+}
+main .container-lg section .menu .content .custom-file .custom-file-label::after {
+  border-radius: 0;
+}
+main .container-lg section .menu .content label {
+  width: 100%;
+}
+main .container-lg section .menu .content label input {
+  margin-top: 10px;
+  border-radius: 0;
+}
+main .container-lg section .menu .content label input:-moz-read-only {
+  background-color: #f8f8f8;
+}
+main .container-lg section .menu .content label input:read-only {
+  background-color: #f8f8f8;
+}
+main .container-lg section .menu .content label .invalid-feedback {
+  color: #e3342f;
+  font-weight: 300;
+}
+main .container-lg section .menu .content button {
+  background-color: #558cb7;
+  color: white;
+  height: 45px;
+  margin-top: 8px;
+}
+main .container-lg section .menu .content button:hover {
+  background-color: #376f9a;
+}

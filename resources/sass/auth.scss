@@ -1,0 +1,74 @@
+main .container-lg {
+
+    * {
+        color: rgb(51, 51, 51);
+    }
+
+    & > section {
+        background-color: white;
+        padding: 40px;
+        max-width: 480px;
+        margin: 0 auto;
+        box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px 0;
+        border-radius: 4px;
+
+        a {
+            margin-top: 15px;
+            color: rgb(85, 140, 183);
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+
+    .main {
+        margin-top: 80px;
+        margin-bottom: 12px;
+        padding-bottom: 30px;
+
+        h3 {
+            font-weight: 700;
+            margin-bottom: 57px;
+        }
+
+        span {
+            font-weight: 500;
+        }
+
+        .custom-file {
+            margin-bottom: 1rem;
+
+            .custom-file-label {
+                margin-top: 10px;
+                border-radius: 0;
+            }
+        }
+
+        label {
+            width: 100%;
+
+            input,  {
+                margin-top: 10px;
+                border-radius: 0;
+            }
+            .invalid-feedback {
+                color: rgb(227, 52, 47);
+                font-weight: 300;
+            }
+        }
+        button {
+            margin-top: 8px;
+            background-color: rgb(85, 140, 183);
+            color: white;
+            height: 45px;
+
+            &:hover {
+                background-color: rgb(55, 111, 154);
+            }
+        }
+    }
+    .remember {
+        padding: 15px 0;
+    }
+}

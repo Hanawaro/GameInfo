@@ -8,6 +8,9 @@
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    @hasSection('link-css')
+        <link rel="stylesheet" href="@yield('link-css')">
+    @endif
 
     <title>@yield('title')</title>
 
@@ -16,10 +19,10 @@
 
 <nav class="navbar navbar-dark py-0 border-bottom">
     <div class="container d-flex align-content-between dropdown"  id="dropdownMenuButton" >
-        <a class="navbar-brand logo" href="#">GameInfo</a>
+        <a class="navbar-brand logo" href="{{ route('home') }}">GameInfo</a>
 
         <div class="d-flex align-items-center ">
-            <a href="#">
+            <a href="{{ route('search') }}">
                 <svg height="24" width="24">
                     <title>Поиск</title>
                     <use xlink:href="{{ asset('storage/img/icons.svg') }}#search"></use>
@@ -27,38 +30,50 @@
             </a>
 
 {{--            guest --}}
-            <a href="#">
+            <a href="{{ route('login') }}">
                 <svg height="24" width="24">
-                    <title>Поиск</title>
+                    <title>Авторизоваться</title>
                     <use xlink:href="{{ asset('storage/img/icons.svg') }}#header-user"></use>
                 </svg>
             </a>
 
 
 {{--            auth --}}
-            <a href="#">
+            <a href="{{ route('create') }}">
                 <svg height="24" width="24">
-                    <title>Поиск</title>
+                    <title>Написать публикацию</title>
                     <use xlink:href="{{ asset('storage/img/icons.svg') }}#write"></use>
                 </svg>
             </a>
 
+{{--            <button class="btn px-0 py-0" type="button" data-toggle="dropdown" aria-expanded="false">--}}
+{{--                <img src="{{ asset('storage/img/user.svg') }}" alt="Профиль" title="Профиль">--}}
+{{--            </button>--}}
             <button class="btn px-0 py-0" type="button" data-toggle="dropdown" aria-expanded="false">
-                <img src="{{ asset('storage/img/user.svg') }}" alt="Профиль" title="Профиль">
+                <svg class="default" height="24" width="24">
+                    <title>Профиль</title>
+                    <use xlink:href="{{ asset('storage/img/icons.svg') }}#placeholder-user"></use>
+                </svg>
             </button>
 
             <div class="dropdown-menu shadow mt-2" aria-labelledby="dropdownMenuButton" data-spy="scroll" data-offset="0">
 
                 <div class="profile-start-section d-flex align-items-center">
-                    <a href="#"><img src="{{ asset('storage/img/user.svg') }}" alt="Профиль" title="Профиль"></a>
-                    <a href="#">@profile-index</a>
+                    <span>
+{{--                        <img src="{{ asset('storage/img/user.svg') }}" alt="Профиль" title="Профиль">--}}
+                        <svg class="default" height="24" width="24">
+                            <title>Профиль</title>
+                            <use xlink:href="{{ asset('storage/img/icons.svg') }}#placeholder-user"></use>
+                        </svg>
+                    </span>
+                    <span href="#">@profile-index</span>
                 </div>
 
                 <div class="dropdown-divider"></div>
 
 
                 <a class="dropdown-item" href="#">Статьи</a>
-                <a class="dropdown-item" href="#">Комментарии</a>
+{{--                <a class="dropdown-item" href="#">Комментарии</a>--}}
 
                 <div class="dropdown-divider"></div>
 
@@ -70,14 +85,14 @@
                 <div class="profile-end-section">
                     <a class="dropdown-item" href="#">
                         <svg height="24" width="24" class="mr-2">
-                            <title>Поиск</title>
+                            <title>Настройка</title>
                             <use xlink:href="{{ asset('storage/img/icons.svg') }}#settings"></use>
                         </svg>
                         <span>Настройки</span>
                     </a>
                     <a class="dropdown-item" href="#">
                         <svg height="24" width="24" class="mr-2">
-                            <title>Поиск</title>
+                            <title>Выйти</title>
                             <use xlink:href="{{ asset('storage/img/icons.svg') }}#logout"></use>
                         </svg>
                         <span>Выход</span>
@@ -91,8 +106,8 @@
 
 </nav>
 
-<main class="d-flex align-content-center" style="min-height: 100vh">
-    <div class="container">
+<main class="d-flex align-content-center pt-2 pb-5" style="min-height: 95vh">
+    <div class="container-lg">
         @yield('content')
     </div>
 </main>
@@ -106,31 +121,31 @@
         <div class="col-md d-flex justify-content-md-end justify-content-center">
             <a class="" href="#">
                 <svg height="24" width="24" class="mx-2">
-                    <title>Поиск</title>
+                    <title>Фейсбук</title>
                     <use xlink:href="{{ asset('storage/img/logos.svg') }}#social-logo-facebook"></use>
                 </svg>
             </a>
             <a class="" href="#">
                 <svg height="24" width="24" class="mx-2">
-                    <title>Поиск</title>
+                    <title>Телеграм</title>
                     <use xlink:href="{{ asset('storage/img/logos.svg') }}#social-logo-telegram"></use>
                 </svg>
             </a>
             <a class="" href="#">
                 <svg height="24" width="24" class="mx-2">
-                    <title>Поиск</title>
+                    <title>Твиттер</title>
                     <use xlink:href="{{ asset('storage/img/logos.svg') }}#social-logo-twitter"></use>
                 </svg>
             </a>
             <a class="" href="#">
                 <svg height="24" width="24" class="mx-2">
-                    <title>Поиск</title>
+                    <title>Вконтакте</title>
                     <use xlink:href="{{ asset('storage/img/logos.svg') }}#social-logo-vkontakte"></use>
                 </svg>
             </a>
             <a class="" href="#">
                 <svg height="24" width="24" class="mx-2">
-                    <title>Поиск</title>
+                    <title>Ютуб</title>
                     <use xlink:href="{{ asset('storage/img/logos.svg') }}#social-logo-youtube"></use>
                 </svg>
             </a>
@@ -140,6 +155,9 @@
 </footer>
 
 <script src="{{ asset('js/app.js') }}"></script>
+@hasSection('link-js')
+    <script src="@yield('link-js')"></script>
+@endif
 
 </body>
 </html>
