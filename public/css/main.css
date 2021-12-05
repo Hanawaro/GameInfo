@@ -133,7 +133,7 @@ body .article svg {
 }
 body .article .title {
   font-size: 0.82rem;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 body .article .title a {
   font-weight: 700;
@@ -147,21 +147,29 @@ body .article .title a:hover {
 body .article .title span {
   color: #777777;
 }
-body .article .preview-header {
-  font-size: 1.2rem;
-  font-weight: 500;
-  margin-bottom: 16px;
+body .article h3 {
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 2rem !important;
 }
-body .article .preview-photo img {
+body .article h5 {
+  font-size: 1.2rem !important;
+  font-weight: 500 !important;
+  margin-bottom: 1.5rem !important;
+}
+body .article p {
+  font-size: 1rem !important;
+  font-weight: 300 !important;
+  margin-bottom: 1rem !important;
+}
+body .article img, body .article iframe {
   max-width: 100%;
   -o-object-fit: contain;
      object-fit: contain;
-}
-body .article .preview-info {
-  font-size: 1rem;
+  margin-bottom: 1rem;
 }
 body .article .read-more {
-  margin-top: 18px;
+  margin-top: 10px;
   margin-bottom: 24px;
 }
 body .article .status-bar {
@@ -171,10 +179,10 @@ body .article .status-bar span {
   font-weight: 500;
   color: #798e98;
 }
-body .article .status-bar .positive * {
+body .article .status-bar span.positive {
   color: #7aa600;
 }
-body .article .status-bar .negative * {
+body .article .status-bar span.negative {
   color: #d04e4e;
 }
 body .article .status-bar .views span, body .article .status-bar .comments span {

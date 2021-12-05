@@ -366,6 +366,28 @@ eval("/* module decorator */ module = __webpack_require__.nmd(module);\nvar __WE
 
 /***/ }),
 
+/***/ "./resources/sass/create.scss":
+/*!************************************!*\
+  !*** ./resources/sass/create.scss ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9yZXNvdXJjZXMvc2Fzcy9jcmVhdGUuc2Nzcy5qcyIsIm1hcHBpbmdzIjoiO0FBQUEiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvc2Fzcy9jcmVhdGUuc2Nzcz8xMTM1Il0sInNvdXJjZXNDb250ZW50IjpbIi8vIGV4dHJhY3RlZCBieSBtaW5pLWNzcy1leHRyYWN0LXBsdWdpblxuZXhwb3J0IHt9OyJdLCJuYW1lcyI6W10sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./resources/sass/create.scss\n");
+
+/***/ }),
+
+/***/ "./resources/sass/settings.scss":
+/*!**************************************!*\
+  !*** ./resources/sass/settings.scss ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9yZXNvdXJjZXMvc2Fzcy9zZXR0aW5ncy5zY3NzLmpzIiwibWFwcGluZ3MiOiI7QUFBQSIsInNvdXJjZXMiOlsid2VicGFjazovLy8uL3Jlc291cmNlcy9zYXNzL3NldHRpbmdzLnNjc3M/MjBhYSJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBleHRyYWN0ZWQgYnkgbWluaS1jc3MtZXh0cmFjdC1wbHVnaW5cbmV4cG9ydCB7fTsiXSwibmFtZXMiOltdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./resources/sass/settings.scss\n");
+
+/***/ }),
+
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
@@ -580,7 +602,9 @@ module.exports = JSON.parse('{"_args":[["axios@0.21.4","/Users/hanawarokato/web/
 /******/ 			"css/app": 0,
 /******/ 			"css/auth": 0,
 /******/ 			"css/search": 0,
-/******/ 			"css/home": 0
+/******/ 			"css/home": 0,
+/******/ 			"css/settings": 0,
+/******/ 			"css/create": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -630,12 +654,14 @@ module.exports = JSON.parse('{"_args":[["axios@0.21.4","/Users/hanawarokato/web/
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/main","css/app","css/auth","css/search","css/home"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	__webpack_require__.O(undefined, ["css/main","css/app","css/auth","css/search","css/home"], () => (__webpack_require__("./resources/sass/app.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/main","css/app","css/auth","css/search","css/home"], () => (__webpack_require__("./resources/sass/main.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/main","css/app","css/auth","css/search","css/home"], () => (__webpack_require__("./resources/sass/home.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/main","css/app","css/auth","css/search","css/home"], () => (__webpack_require__("./resources/sass/search.scss")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/main","css/app","css/auth","css/search","css/home"], () => (__webpack_require__("./resources/sass/auth.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/main","css/app","css/auth","css/search","css/home","css/settings","css/create"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/main","css/app","css/auth","css/search","css/home","css/settings","css/create"], () => (__webpack_require__("./resources/sass/app.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/main","css/app","css/auth","css/search","css/home","css/settings","css/create"], () => (__webpack_require__("./resources/sass/main.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/main","css/app","css/auth","css/search","css/home","css/settings","css/create"], () => (__webpack_require__("./resources/sass/home.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/main","css/app","css/auth","css/search","css/home","css/settings","css/create"], () => (__webpack_require__("./resources/sass/search.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/main","css/app","css/auth","css/search","css/home","css/settings","css/create"], () => (__webpack_require__("./resources/sass/auth.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/main","css/app","css/auth","css/search","css/home","css/settings","css/create"], () => (__webpack_require__("./resources/sass/create.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/main","css/app","css/auth","css/search","css/home","css/settings","css/create"], () => (__webpack_require__("./resources/sass/settings.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

@@ -83,10 +83,12 @@ body {
                         width: 36px;
                         height: 36px;
                     }
+
                     img {
                         border-radius: 0.5rem;
                         border: 1px solid rgb(86, 142, 189);
                     }
+
                     svg.default {
                         fill: rgb(139, 170, 181);
                     }
@@ -101,6 +103,7 @@ body {
                             color: rgb(72, 114, 132);
                         }
                     }
+
                     span {
                         cursor: default;
                     }
@@ -166,7 +169,7 @@ body {
 
         .title {
             font-size: 0.82rem;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
 
             a {
                 font-weight: 700;
@@ -184,25 +187,33 @@ body {
             }
         }
 
-        .preview-header {
-            font-size: 1.2rem;
-            font-weight: 500;
-            margin-bottom: 16px;
+        h3 {
+            font-size: 2rem !important;
+            font-weight: 700 !important;
+            margin-bottom: 2rem !important;
         }
 
-        .preview-photo {
-            img {
-                max-width: 100%;
-                object-fit: contain;
-            }
+        h5 {
+            font-size: 1.2rem !important;
+            font-weight: 500 !important;
+            margin-bottom: 1.5rem !important;
         }
 
-        .preview-info {
-            font-size: 1rem;
+        p {
+            font-size: 1rem !important;
+            font-weight: 300 !important;
+            margin-bottom: 1rem !important;
         }
+
+        img, iframe {
+            max-width: 100%;
+            object-fit: contain;
+            margin-bottom: 1rem;
+        }
+
 
         .read-more {
-            margin-top: 18px;
+            margin-top: 10px;
             margin-bottom: 24px;
         }
 
@@ -212,12 +223,14 @@ body {
             span {
                 font-weight: 500;
                 color: rgb(121, 142, 152);
-            }
-            .positive * {
-                color: rgb(122, 166, 0);
-            }
-            .negative * {
-                color: rgb(208, 78, 78);
+
+                &.positive {
+                    color: rgb(122, 166, 0);
+                }
+
+                &.negative {
+                    color: rgb(208, 78, 78);
+                }
             }
 
             .views span, .comments span {
@@ -240,10 +253,12 @@ body {
                 fill: rgb(139, 170, 181);
             }
         }
+
         div {
             * {
                 font-size: 0.82rem;
             }
+
             a {
                 color: rgb(84, 142, 170);
 
@@ -253,6 +268,7 @@ body {
                 }
 
             }
+
             div {
                 color: rgb(119, 119, 119);
             }
@@ -282,11 +298,12 @@ body {
 
     .empty {
         color: rgb(119, 119, 119) !important;
+
         svg {
             height: 154px;
             margin-top: 48px;
             margin-bottom: 22px;
-            width:210px
+            width: 210px
         }
     }
 

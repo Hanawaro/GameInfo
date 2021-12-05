@@ -9,44 +9,65 @@
             </svg>
         </a>
         <a class="identifier" href="/">user</a>
-        <span class="time">сегодня в 18:14</span>
+        <span class="time">{{ $article->created_at->format('d.m.Y H:i') }}</span>
     </div>
 
-    <div class="preview-header">
-        Руководство по Databricks Certified Associate Developer for Apache Spark 3.0
-    </div>
 
-    <div class="preview-photo">
-        <img src="{{ asset('storage/img/img.png') }}" alt="preview-photo">
-    </div>
-
-    <br>
-
-    <div class="preview-info">
-        В этой статье я поделюсь с вами ресурсами и методологией, которые я активно использовал для прохождения
-        сертификации “Databricks Certified Associate Developer for Apache Spark 3.0”.
-    </div>
+    @foreach($article->previews()->get() as $element)
+        @switch($element->element)
+            @case('paragraph')
+            <p>{{ $element->value }}</p>
+            @break
+            @case('header-3')
+            <h3>{{ $element->value }}</h3>
+            @break
+            @case('header-5')
+            <h5>{{ $element->value }}</h5>
+            @break
+            @case('img')
+            <img src="{{ asset('storage/' . $element->value) }}" alt="Фотография"/>
+            @break
+            @case('video')
+            <iframe
+                    width="100%"
+                    height="395px"
+                    src="{{ $element->value }}"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+            </iframe>
+            @break
+        @endswitch
+    @endforeach
 
     <a class="read-more btn btn-outline-primary" href="/">Читать далее</a>
 
     <div class="status-bar d-flex">
-        <div class="rate positive d-flex align-items-center" title="Всего голосов 12: ↑14 и ↓2">
+        <div class="rate d-flex align-items-center"
+             title="Всего голосов {{ $article->like - $article->dislike }}: ↑{{ $article->like  }} и ↓{{ $article->dislike  }}">
             <svg height="24" width="24">
                 <use xlink:href="{{ asset('storage/img/icons.svg') }}#counter-rating"></use>
             </svg>
-            <span>+12</span>
+            @if($article->like - $article->dislike > 0)
+                <span class="positive">+{{ $article->like - $article->dislike }}</span>
+            @elseif($article->like - $article->dislike < 0)
+                <span class="negative">{{ $article->like - $article->dislike }}</span>
+            @else
+                <span>0</span>
+            @endif
+
         </div>
         <div class="views d-flex align-items-center" title="Просмотры">
             <svg height="24" width="24">
                 <use xlink:href="{{ asset('storage/img/icons.svg') }}#counter-views"></use>
             </svg>
-            <span>42</span>
+            <span>{{ $article->views }}</span>
         </div>
         <div class="comments d-flex align-items-center" title="Комментарии">
             <svg height="24" width="24">
                 <use xlink:href="{{ asset('storage/img/icons.svg') }}#counter-comments"></use>
             </svg>
-            <span>120</span>
+            <span>0</span>
         </div>
     </div>
 </div>

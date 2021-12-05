@@ -7,11 +7,10 @@
 @section('content')
 
     <section>
-        <form class="input-group mb-3" method="POST" action="/">
-            @csrf()
+        <form class="input-group mb-3" method="GET" action="{{ route('search') }}">
 
             <div class="search">
-                <input type="text" name="search" class="form-control" placeholder="Поиск">
+                <input type="text" name="by" class="form-control" placeholder="Поиск" value="{{ $query }}">
                 <div class="input-group-append">
                     <button class="btn" type="submit">
                         <svg height="20" width="20">
@@ -38,27 +37,34 @@
 
     <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-{{--            @include('template.article')--}}
-{{--            @include('template.article')--}}
 
+            @foreach($articles as $article)
+                @include('template.article', $article)
+            @endforeach
+
+            @if($articles->isEmpty())
             <div class="empty d-flex align-items-center flex-column">
                 <svg height="16" width="16">
                     <use xlink:href="{{ asset('storage/img/empty-placeholder.svg') }}#placeholder"></use>
                 </svg>
                 К сожалению, такой публикации нет
             </div>
+            @endif
         </div>
         <div class="tab-pane" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-{{--            @include('template.user')--}}
-{{--            @include('template.user')--}}
-{{--            @include('template.user')--}}
 
+            @foreach($users as $user)
+                @include('template.user')
+            @endforeach
+
+            @if($users->isEmpty())
             <div class="empty d-flex align-items-center flex-column">
                 <svg height="16" width="16">
                     <use xlink:href="{{ asset('storage/img/empty-placeholder.svg') }}#placeholder"></use>
                 </svg>
                 К сожалению, такого пользователя нет
             </div>
+            @endif
         </div>
     </div>
 

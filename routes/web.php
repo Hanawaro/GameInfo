@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\CreateController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,17 +16,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [HomeController::class, 'show'])->name('home');
+Route::get('/{global}/{local}', [HomeController::class, 'sortBy'])->name('sortBy');
+Route::post('/sortByRedirect', [HomeController::class, 'sortByRedirect'])->name('sortByRedirect');
 
-Route::get('/search', function () {
-    return view('search');
-})->name('search');
+Route::get('/search', [SearchController::class, 'show'])->name('search');
 
-Route::get('/create', function () {
-    return view('create');
-})->name('create');
+Route::get('/create', [CreateController::class, 'show'])->name('create');
+Route::post('/create', [CreateController::class, 'send'])->name('send');
+
+Route::get('/settings', function () {
+    return view('settings');
+})->name('settings');
 
 Route::get('/login', function () {
     return view('login');

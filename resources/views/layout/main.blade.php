@@ -5,6 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
@@ -14,11 +15,13 @@
 
     <title>@yield('title')</title>
 
+    <script src="{{ asset('js/app.js') }}"></script>
+
 </head>
 <body>
 
 <nav class="navbar navbar-dark py-0 border-bottom">
-    <div class="container d-flex align-content-between dropdown"  id="dropdownMenuButton" >
+    <div class="container d-flex align-content-between dropdown" id="dropdownMenuButton">
         <a class="navbar-brand logo" href="{{ route('home') }}">GameInfo</a>
 
         <div class="d-flex align-items-center ">
@@ -29,7 +32,7 @@
                 </svg>
             </a>
 
-{{--            guest --}}
+            {{--            guest --}}
             <a href="{{ route('login') }}">
                 <svg height="24" width="24">
                     <title>Авторизоваться</title>
@@ -38,7 +41,7 @@
             </a>
 
 
-{{--            auth --}}
+            {{--            auth --}}
             <a href="{{ route('create') }}">
                 <svg height="24" width="24">
                     <title>Написать публикацию</title>
@@ -46,9 +49,9 @@
                 </svg>
             </a>
 
-{{--            <button class="btn px-0 py-0" type="button" data-toggle="dropdown" aria-expanded="false">--}}
-{{--                <img src="{{ asset('storage/img/user.svg') }}" alt="Профиль" title="Профиль">--}}
-{{--            </button>--}}
+            {{--            <button class="btn px-0 py-0" type="button" data-toggle="dropdown" aria-expanded="false">--}}
+            {{--                <img src="{{ asset('storage/img/user.svg') }}" alt="Профиль" title="Профиль">--}}
+            {{--            </button>--}}
             <button class="btn px-0 py-0" type="button" data-toggle="dropdown" aria-expanded="false">
                 <svg class="default" height="24" width="24">
                     <title>Профиль</title>
@@ -56,7 +59,8 @@
                 </svg>
             </button>
 
-            <div class="dropdown-menu shadow mt-2" aria-labelledby="dropdownMenuButton" data-spy="scroll" data-offset="0">
+            <div class="dropdown-menu shadow mt-2" aria-labelledby="dropdownMenuButton" data-spy="scroll"
+                 data-offset="0">
 
                 <div class="profile-start-section d-flex align-items-center">
                     <span>
@@ -73,7 +77,7 @@
 
 
                 <a class="dropdown-item" href="#">Статьи</a>
-{{--                <a class="dropdown-item" href="#">Комментарии</a>--}}
+                {{--                <a class="dropdown-item" href="#">Комментарии</a>--}}
 
                 <div class="dropdown-divider"></div>
 
@@ -83,7 +87,7 @@
 
 
                 <div class="profile-end-section">
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="{{ route('settings') }}">
                         <svg height="24" width="24" class="mr-2">
                             <title>Настройка</title>
                             <use xlink:href="{{ asset('storage/img/icons.svg') }}#settings"></use>
@@ -154,7 +158,6 @@
     </div>
 </footer>
 
-<script src="{{ asset('js/app.js') }}"></script>
 @hasSection('link-js')
     <script src="@yield('link-js')"></script>
 @endif

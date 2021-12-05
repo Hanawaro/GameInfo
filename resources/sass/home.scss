@@ -15,7 +15,7 @@ main .container-lg {
         }
     }
 
-    & > section, & > div {
+    & > section, & > div:not(.empty) {
         background-color: white;
         margin-bottom: 12px;
 
