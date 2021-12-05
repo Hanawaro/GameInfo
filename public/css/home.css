@@ -1,0 +1,98 @@
+main .container-lg * {
+  color: #333333;
+}
+main .container-lg .btn {
+  color: #548eaa;
+  border-color: #548eaa;
+}
+main .container-lg .btn:hover, main .container-lg .btn.active {
+  color: white;
+  background-color: #548eaa;
+}
+main .container-lg > section, main .container-lg > div:not(.empty) {
+  background-color: white;
+  margin-bottom: 12px;
+}
+main .container-lg > section .header, main .container-lg > div:not(.empty) .header {
+  font-size: 1.25rem;
+  padding: 16px 20px;
+}
+main .container-lg > section .dropdown-divider, main .container-lg > div:not(.empty) .dropdown-divider {
+  padding: 0;
+  margin-bottom: 0;
+}
+main .container-lg > section .d-flex .collapse-menu, main .container-lg > div:not(.empty) .d-flex .collapse-menu {
+  flex: 1 1 100%;
+}
+main .container-lg > section .d-flex .collapse-menu svg, main .container-lg > div:not(.empty) .d-flex .collapse-menu svg {
+  transform: rotate(180deg);
+  transition: 0.4s;
+}
+main .container-lg > section .d-flex .collapse-menu.collapsed svg, main .container-lg > div:not(.empty) .d-flex .collapse-menu.collapsed svg {
+  transform: rotate(0);
+}
+main .container-lg > section .d-flex a, main .container-lg > div:not(.empty) .d-flex a {
+  font-weight: 500;
+  font-size: 0.8rem;
+  color: black;
+  padding: 16px 20px;
+}
+main .container-lg > section .d-flex a:hover, main .container-lg > div:not(.empty) .d-flex a:hover {
+  text-decoration: none;
+}
+main .container-lg > section .d-flex a svg, main .container-lg > div:not(.empty) .d-flex a svg {
+  margin: 0 !important;
+}
+main .container-lg > section #collapse form, main .container-lg > div:not(.empty) #collapse form {
+  background-color: #f8f8f8;
+  padding: 16px 20px;
+}
+main .container-lg > section #collapse form input[type=radio], main .container-lg > div:not(.empty) #collapse form input[type=radio] {
+  display: none;
+}
+main .container-lg > section #collapse form .nav-item, main .container-lg > div:not(.empty) #collapse form .nav-item {
+  margin-right: 8px;
+}
+main .container-lg > section #collapse form .nav-item input, main .container-lg > section #collapse form .nav-item label, main .container-lg > div:not(.empty) #collapse form .nav-item input, main .container-lg > div:not(.empty) #collapse form .nav-item label {
+  transition: none;
+}
+main .container-lg > section #collapse form .nav-item label, main .container-lg > div:not(.empty) #collapse form .nav-item label {
+  pointer-events: none;
+  margin: 0;
+}
+main .container-lg > section #collapse form .tab-pane > div, main .container-lg > section #collapse form > div, main .container-lg > div:not(.empty) #collapse form .tab-pane > div, main .container-lg > div:not(.empty) #collapse form > div {
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: black;
+  padding-bottom: 8px;
+}
+main .container-lg > section #collapse form .tab-pane .btn, main .container-lg > div:not(.empty) #collapse form .tab-pane .btn {
+  margin-right: 8px;
+}
+main .container-lg > section #collapse form .btn, main .container-lg > div:not(.empty) #collapse form .btn {
+  font-size: 0.75rem;
+  padding: 5px 9px;
+  color: #548eaa;
+  border-color: #548eaa;
+}
+main .container-lg > section #collapse form .btn label, main .container-lg > div:not(.empty) #collapse form .btn label {
+  transition: 0.2s color;
+  color: #548eaa;
+}
+main .container-lg > section #collapse form .btn:hover, main .container-lg > section #collapse form .btn.active, main .container-lg > div:not(.empty) #collapse form .btn:hover, main .container-lg > div:not(.empty) #collapse form .btn.active {
+  color: white;
+  background-color: #548eaa;
+}
+main .container-lg > section #collapse form .btn:hover label, main .container-lg > section #collapse form .btn.active label, main .container-lg > div:not(.empty) #collapse form .btn:hover label, main .container-lg > div:not(.empty) #collapse form .btn.active label {
+  color: white;
+}
+main .container-lg > section #collapse form .btn-success, main .container-lg > div:not(.empty) #collapse form .btn-success {
+  color: white;
+  border-radius: 3px;
+  background-color: #7aa600;
+  border-color: #7aa600;
+  margin-top: 20px;
+}
+main .container-lg > section #collapse form .btn-success:hover, main .container-lg > div:not(.empty) #collapse form .btn-success:hover {
+  background-color: #689d29;
+}

@@ -1,0 +1,56 @@
+main .container-lg * {
+  color: #333333;
+}
+main .container-lg > section, main .container-lg .article, main .container-lg .user {
+  background-color: white;
+  margin-bottom: 12px;
+}
+main .container-lg section .search {
+  width: 100%;
+  margin: 16px 20px;
+  position: relative;
+}
+main .container-lg section .search input {
+  padding-right: 40px;
+  border-radius: 0;
+}
+main .container-lg section .search .input-group-append {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 999;
+  border: none;
+}
+main .container-lg section .search .input-group-append:hover {
+  background-color: transparent;
+}
+main .container-lg section .search .input-group-append svg {
+  fill: #8faab4;
+}
+main .container-lg section nav {
+  width: 100%;
+  margin-bottom: 16px;
+}
+main .container-lg section nav .nav {
+  padding: 0 20px;
+}
+main .container-lg section nav .nav a {
+  padding-right: 0;
+  padding-left: 0;
+  line-height: 2rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #6f7577;
+  transition: 0.2s color;
+  margin-right: 24px;
+  background-color: transparent;
+  border: none;
+}
+main .container-lg section nav .nav a:hover {
+  color: #587c99;
+}
+main .container-lg section nav .nav a.active {
+  color: #587c99;
+  background-color: transparent;
+  border-bottom: 2px solid #587c99;
+}

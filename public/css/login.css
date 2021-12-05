@@ -1,0 +1,48 @@
+main .container-lg * {
+  color: #333333;
+}
+main .container-lg > section {
+  background-color: white;
+  padding: 40px;
+  max-width: 480px;
+  margin: 0 auto;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px 0;
+  border-radius: 4px;
+}
+main .container-lg > section a {
+  margin-top: 15px;
+  color: #558cb7;
+}
+main .container-lg > section a:hover {
+  text-decoration: none;
+}
+main .container-lg .login {
+  margin-top: 80px;
+  margin-bottom: 12px;
+  padding-bottom: 30px;
+}
+main .container-lg .login h3 {
+  font-weight: 700;
+  margin-bottom: 57px;
+}
+main .container-lg .login label {
+  width: 100%;
+}
+main .container-lg .login label span {
+  font-weight: 500;
+}
+main .container-lg .login label input {
+  margin-top: 10px;
+  border-radius: 0;
+}
+main .container-lg .login button {
+  background-color: #558cb7;
+  color: white;
+  height: 48px;
+}
+main .container-lg .login button:hover {
+  background-color: #376f9a;
+}
+main .container-lg .remember {
+  padding: 15px 0;
+}

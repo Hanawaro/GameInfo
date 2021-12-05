@@ -1,0 +1,310 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap');
+
+body {
+    -webkit-overflow-scrolling: touch;
+    background-color: #f0f0f0;
+    margin: 0 auto;
+    min-height: 100vh;
+    min-width: 320px;
+    width: 100%;
+    height: 100%;
+
+    * {
+        font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+        transition: opacity .2s ease-in-out, color .2s ease-in-out, text-decoration .2s ease-in-out, background-color .2s ease-in-out, -webkit-text-decoration .2s ease-in-out;
+
+        &:focus {
+            box-shadow: none !important;
+        }
+    }
+
+    .logo {
+        font-family: 'Oxygen', sans-serif;
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+
+    .navbar {
+        background-color: rgb(48, 59, 68);
+
+        .d-flex {
+            gap: 1rem;
+
+            svg, img {
+                width: 24px;
+                height: 24px;
+                fill: white;
+                transition: 0.2s;
+
+                &:not(.default):hover {
+                    fill: rgb(101, 160, 190);
+                }
+
+                &.default {
+                    fill: rgb(139, 170, 181);
+                }
+            }
+
+            .dropdown-menu {
+                overflow-x: hidden;
+                max-height: 80vh;
+                left: auto;
+                right: 0;
+                border: 0;
+
+
+                .dropdown-item {
+                    padding: 0.8rem 6rem 0.8rem 1.5rem;
+                    display: flex;
+                    align-items: center;
+                    font-size: 1rem;
+
+                    * {
+                        transition: 0.2s;
+                    }
+
+                    svg {
+                        fill: rgb(131, 138, 146);
+                    }
+
+                    &:hover *, &:hover {
+                        fill: rgb(74, 114, 171);
+                        color: rgb(74, 114, 171);
+                        background-color: rgb(237, 245, 249);
+                    }
+                }
+
+                .profile-start-section {
+                    padding: 0.8rem 6rem 0.8rem 1.5rem;
+                    font-size: 1rem;
+                    gap: 0.5rem;
+
+                    img, svg.default {
+                        width: 36px;
+                        height: 36px;
+                    }
+
+                    img {
+                        border-radius: 0.5rem;
+                        border: 1px solid rgb(86, 142, 189);
+                    }
+
+                    svg.default {
+                        fill: rgb(139, 170, 181);
+                    }
+
+                    a, span {
+                        font-size: 0.82rem;
+                        color: rgb(84, 142, 170);
+                        transition: 0.2s;
+
+                        &:hover {
+                            text-decoration: none;
+                            color: rgb(72, 114, 132);
+                        }
+                    }
+
+                    span {
+                        cursor: default;
+                    }
+
+                }
+
+                .profile-end-section .dropdown-item {
+                    color: rgb(131, 138, 146);
+                }
+            }
+        }
+    }
+
+    main > * {
+        padding: 0;
+
+        @media (min-width: 768px) {
+            max-width: 860px !important;
+        }
+    }
+
+    footer {
+        .container {
+            div {
+                font-size: 0.875rem;
+                padding: 1rem 0;
+
+                a {
+                    color: white;
+
+
+                    &:hover {
+                        color: rgb(74, 114, 171);
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+
+        @media (max-width: 767px) {
+            a {
+                margin: 0 6px;
+
+                svg {
+                    width: 37px;
+                    height: 37px;
+                }
+            }
+        }
+    }
+
+    .article, .user {
+        background-color: white;
+        margin-bottom: 12px;
+    }
+
+    .article {
+        padding: 16px 20px;
+
+        svg {
+            fill: rgb(139, 170, 181);
+        }
+
+        .title {
+            font-size: 0.82rem;
+            margin-bottom: 12px;
+
+            a {
+                font-weight: 700;
+                color: rgb(65, 75, 80);
+                margin-right: 2px;
+
+                &:hover {
+                    color: rgb(72, 114, 132);
+                    text-decoration: none;
+                }
+            }
+
+            span {
+                color: rgb(119, 119, 119);
+            }
+        }
+
+        h3 {
+            font-size: 2rem !important;
+            font-weight: 700 !important;
+            margin-bottom: 2rem !important;
+        }
+
+        h5 {
+            font-size: 1.2rem !important;
+            font-weight: 500 !important;
+            margin-bottom: 1.5rem !important;
+        }
+
+        p {
+            font-size: 1rem !important;
+            font-weight: 300 !important;
+            margin-bottom: 1rem !important;
+        }
+
+        img, iframe {
+            max-width: 100%;
+            object-fit: contain;
+            margin-bottom: 1rem;
+        }
+
+
+        .read-more {
+            margin-top: 10px;
+            margin-bottom: 24px;
+        }
+
+        .status-bar {
+            gap: 32px;
+
+            span {
+                font-weight: 500;
+                color: rgb(121, 142, 152);
+
+                &.positive {
+                    color: rgb(122, 166, 0);
+                }
+
+                &.negative {
+                    color: rgb(208, 78, 78);
+                }
+            }
+
+            .views span, .comments span {
+                margin-left: 3px;
+            }
+        }
+    }
+
+    .article, .user {
+        padding: 16px 20px;
+    }
+
+    .user {
+        a {
+            margin-right: 8px;
+
+            img, svg {
+                height: 40px;
+                width: 40px;
+                fill: rgb(139, 170, 181);
+            }
+        }
+
+        div {
+            * {
+                font-size: 0.82rem;
+            }
+
+            a {
+                color: rgb(84, 142, 170);
+
+                &:hover {
+                    text-decoration: none;
+                    color: rgb(72, 114, 132);
+                }
+
+            }
+
+            div {
+                color: rgb(119, 119, 119);
+            }
+        }
+    }
+
+    .messenger {
+        position: fixed;
+        top: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+
+        .alert {
+            transition: 0.4s;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateY(-150%) translateX(-50%);
+            opacity: 0;
+
+            &.active {
+                transform: translateY(0%) translateX(-50%);
+                opacity: 1;
+            }
+        }
+    }
+
+    .empty {
+        color: rgb(119, 119, 119) !important;
+
+        svg {
+            height: 154px;
+            margin-top: 48px;
+            margin-bottom: 22px;
+            width: 210px
+        }
+    }
+
+}

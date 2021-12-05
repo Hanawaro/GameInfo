@@ -1,0 +1,123 @@
+@charset "UTF-8";
+main .container-lg section {
+  background-color: white;
+  margin-bottom: 12px;
+  padding: 16px 20px;
+}
+main .container-lg section a {
+  cursor: pointer;
+}
+main .container-lg section .header {
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+main .container-lg section .publish {
+  margin-top: 2rem;
+  color: #548eaa;
+  border-color: #548eaa;
+}
+main .container-lg section .publish:hover {
+  color: white;
+  background-color: #548eaa;
+}
+main .container-lg section .statement {
+  display: flex;
+  align-items: center;
+}
+main .container-lg section .statement *:focus {
+  outline: none;
+}
+main .container-lg section .statement .add {
+  margin-right: 8px;
+}
+main .container-lg section .statement .add svg {
+  width: 24px;
+  height: 26px;
+  transition: 0.4s;
+  fill: silver;
+}
+main .container-lg section .statement .add:hover svg {
+  fill: #838a92;
+}
+main .container-lg section .statement .remove {
+  margin-left: 8px;
+}
+main .container-lg section .statement .remove svg {
+  width: 16px;
+  height: 16px;
+  transform: rotate(45deg);
+  transition: 0.4s;
+  fill: #e3342f;
+}
+main .container-lg section .statement .remove:hover svg {
+  fill: #c1231f;
+}
+main .container-lg section .statement .content {
+  flex: 1 1 100%;
+  max-width: calc(100% - 88px);
+  margin: 0;
+}
+main .container-lg section .statement .content:empty:before {
+  color: #838a92;
+  content: attr(data-placeholder);
+}
+main .container-lg section .statement .content * {
+  word-wrap: break-word;
+}
+main .container-lg section .statement .content:is(h3), main .container-lg section .statement .content:is(h3) * {
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+}
+main .container-lg section .statement .content:is(h5), main .container-lg section .statement .content:is(h5) * {
+  font-size: 1.2rem !important;
+  font-weight: 500 !important;
+}
+main .container-lg section .statement .content:is(p), main .container-lg section .statement .content:is(p) * {
+  font-size: 1rem !important;
+}
+main .container-lg section .statement .content .custom-file-label {
+  margin: 0;
+}
+main .container-lg section .statement .content .custom-file-label::after {
+  content: "Выбрать" !important;
+}
+main .container-lg section .statement .content .btn {
+  background-color: transparent;
+  color: #838a92;
+  border-color: #838a92;
+}
+main .container-lg section .statement .content .btn::after {
+  display: none;
+}
+main .container-lg section .statement .content .dropdown-menu {
+  left: 20% !important;
+  min-width: 60%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 0 8px 0;
+  border-radius: 3px;
+  padding: 0;
+}
+main .container-lg section .statement .content .dropdown-menu label {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem 1rem;
+}
+main .container-lg section .statement .content .dropdown-menu label input {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border: 0;
+}
+main .container-lg section .statement.header-3 {
+  margin-bottom: 2rem !important;
+}
+main .container-lg section .statement.header-5 {
+  margin-bottom: 1.5rem !important;
+}
+main .container-lg section .statement.paragraph {
+  margin-bottom: 1rem !important;
+}
+main .container-lg section .statement.img, main .container-lg section .statement.video {
+  margin-top: 1rem !important;
+  margin-bottom: 1rem !important;
+}

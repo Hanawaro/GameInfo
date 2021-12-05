@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\CreateController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +16,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'show'])->name('home');
+Route::get('/{global}/{local}', [HomeController::class, 'sortBy'])->name('sortBy');
+Route::post('/sortByRedirect', [HomeController::class, 'sortByRedirect'])->name('sortByRedirect');
 
-Route::get('/hello', function () {
-    return view('home');
-});
+Route::get('/search', [SearchController::class, 'show'])->name('search');
+
+Route::get('/create', [CreateController::class, 'show'])->name('create');
+Route::post('/create', [CreateController::class, 'send'])->name('send');
+
+Route::get('/settings', function () {
+    return view('settings');
+})->name('settings');
+
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
+
+Route::get('/register', function () {
+    return view('register');
+})->name('register');
+
+Route::get('/login/remember', function () {
+    return view('remember');
+})->name('remember');
+
+Route::get('/user', function () {
+    return view('user');
+})->name('user');
