@@ -8,12 +8,12 @@ use DateInterval;
 use DateTime;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class ArticlesController extends Controller
 {
 
-    public function show(Request $request)
+    public function indexAll(Request $request)
     {
-        return view('home')
+        return view('articles')
             ->with('articles', Article::orderBy('created_at', 'desc')->get())
             ->with('message', 'Все подряд')
             ->with('global', 'news')
@@ -21,10 +21,14 @@ class HomeController extends Controller
 
     }
 
+    public function indexOne($id) {
+        return $id;
+    }
+
     public function sortByRedirect(Request $request)
     {
         return redirect()
-            ->route("sortBy", ['global' => $request->post('global'), 'local' => $request->post($request->post('global'))]);
+            ->route("article.sort", ['global' => $request->post('global'), 'local' => $request->post($request->post('global'))]);
 
     }
 
@@ -41,7 +45,7 @@ class HomeController extends Controller
                 break;
         }
 
-        return view('home')
+        return view('articles')
             ->with('articles', $result[0])
             ->with('message', $result[1])
             ->with('global',$global)
@@ -70,7 +74,7 @@ class HomeController extends Controller
             case 'day':
                 return [Article::where('created_at', '>=', date(DATE_ATOM, $now->sub(new DateInterval('P1D'))->getTimestamp()))
                     ->orderBy('rate', 'desc')
-                    ->get(), 'Лучшие за день'];
+                    ->get(), 'Лучшие за сутки'];
             case 'week':
                 return [Article::where('created_at', '>=', date(DATE_ATOM, $now->sub(new DateInterval('P1W'))->getTimestamp()))
                     ->orderBy('rate', 'desc')

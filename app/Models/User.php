@@ -12,6 +12,8 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public $timestamps = true;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -41,4 +43,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function role() {
+        return $this->belongsTo(Role::class)->first()->role;
+    }
+
+    public function articles() {
+        return $this->hasMany(Article::class)->orderBy('created_at', 'desc');
+    }
 }

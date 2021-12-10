@@ -70,7 +70,7 @@
             </div>
         </div>
 
-        <button type="button" class="publish btn btn-outline-primary" onclick="send('{{ route('send') }}', '{{ route('user') }}')">Готово к публикации</button>
+        <button type="button" class="publish btn btn-outline-primary" onclick="send('{{ route('editor.send') }}', '{{ route('user.get', \Illuminate\Support\Facades\Auth::user()->name) }}')">Готово к публикации</button>
     </section>
 
     </form>

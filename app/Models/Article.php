@@ -15,4 +15,11 @@ class Article extends Model
     {
         return $this->hasMany(Preview::class);
     }
+    public function contents()
+    {
+        return $this->hasMany(Content::class);
+    }
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }

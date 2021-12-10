@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\CreateController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,31 +18,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'show'])->name('home');
-Route::get('/{global}/{local}', [HomeController::class, 'sortBy'])->name('sortBy');
-Route::post('/sortByRedirect', [HomeController::class, 'sortByRedirect'])->name('sortByRedirect');
+Auth::routes();
 
-Route::get('/search', [SearchController::class, 'show'])->name('search');
+Route::get('/user/{name}', [UserController::class, 'index'])->name('user.get');
+Route::post('/article/delete/{id}', [UserController::class, 'delete'])->name('article.delete');
+Route::post('/article/role/editor/{id}', [UserController::class, 'roleEditor'])->name('role.editor');
+Route::post('/article/role/user/{id}', [UserController::class, 'roleUser'])->name('role.user');
 
-Route::get('/create', [CreateController::class, 'show'])->name('create');
-Route::post('/create', [CreateController::class, 'send'])->name('send');
+Route::get('/', [ArticlesController::class, 'indexAll'])->name('article.all');
+Route::get('/article/{id}', [ArticlesController::class, 'indexOne'])->name('article.get');
+Route::get('/{global}/{local}', [ArticlesController::class, 'sortBy'])->name('article.sort');
+Route::post('/sortByRedirect', [ArticlesController::class, 'sortByRedirect'])->name('article.redirect');
+
+Route::get('/search', [SearchController::class, 'index'])->name('search');
+Route::post('/searchRedirect', [SearchController::class, 'searchRedirect'])->name('search.redirect');
+
+Route::get('/editor', [CreateController::class, 'index'])->middleware('auth')->name('editor.create');
+Route::post('/editor', [CreateController::class, 'send'])->middleware('auth')->name('editor.send');
 
 Route::get('/settings', function () {
     return view('settings');
-})->name('settings');
-
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
-
-Route::get('/register', function () {
-    return view('register');
-})->name('register');
-
-Route::get('/login/remember', function () {
-    return view('remember');
-})->name('remember');
-
-Route::get('/user', function () {
-    return view('user');
-})->name('user');
+})->middleware('auth')->name('settings');

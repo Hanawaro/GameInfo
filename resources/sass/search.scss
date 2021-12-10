@@ -1,10 +1,6 @@
 
 main .container-lg {
 
-    * {
-        color: rgb(51, 51, 51);
-    }
-
     & > section, .article, .user {
         background-color: white;
         margin-bottom: 12px;
@@ -51,24 +47,40 @@ main .container-lg {
                     padding-left: 0;
                     line-height: 2rem;
 
-                    text-transform: uppercase;
-                    font-weight: 500;
-                    color: rgb(111, 117, 119);
-                    transition: 0.2s color;
-
                     margin-right: 24px;
 
                     background-color: transparent;
                     border: none;
 
+                    label {
+                        color: rgb(111, 117, 119) !important;
+                        text-transform: uppercase;
+                        font-weight: 500;
+                        transition: 0.2s color;
+                    }
+
                     &:hover {
-                        color: rgb(88, 124, 153);
+                        label {
+                            color: rgb(77, 128, 170) !important;
+                        }
                     }
 
                     &.active {
-                        color: rgb(88, 124, 153);
                         background-color: transparent;
-                        border-bottom: 2px solid rgb(88, 124, 153);
+                        border-bottom: 2px solid rgb(77, 128, 170);
+
+                        label {
+                            color: rgb(77, 128, 170) !important;
+                        }
+                    }
+
+                    label {
+                        cursor: pointer;
+                        margin: 0;
+
+                        input {
+                            display: none;
+                        }
                     }
                 }
             }

@@ -4,26 +4,35 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Preview;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use function Sodium\add;
 
 class CreateController extends Controller
 {
-    public function show() {
+
+    public function index() {
+
+        $this->authorize('editor', Auth::user());
+
         return view('create');
     }
 
     public function send(Request $request) {
 
-
+        $this->authorize('editor', Auth::user());
 
         $article = json_decode($request->post('article'));
 
         DB::beginTransaction();
 
         try {
-            $id = Article::insertGetId([ 'userId' => 0 ]);
+            $id = Article::insertGetId([
+                'user_id' => Auth::id(),
+                'created_at' => Carbon::now()->toDateTimeString(),
+                'updated_at' => Carbon::now()->toDateTimeString()
+            ]);
 
             foreach ($article->preview as $statement) {
 

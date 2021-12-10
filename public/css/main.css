@@ -15,6 +15,12 @@ body * {
 body *:focus {
   box-shadow: none !important;
 }
+body *:hover {
+  text-decoration: none;
+}
+body *:not(.btn) {
+  color: #333333;
+}
 body .logo {
   font-family: "Oxygen", sans-serif;
   font-weight: bold;
@@ -126,16 +132,21 @@ body .article, body .user {
   margin-bottom: 12px;
 }
 body .article {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   padding: 16px 20px;
 }
 body .article svg {
   fill: #8baab5;
 }
 body .article .title {
+  width: 100%;
   font-size: 0.82rem;
   margin-bottom: 12px;
 }
 body .article .title a {
+  padding: 0 !important;
   font-weight: 700;
   color: #414b50;
   margin-right: 2px;
@@ -146,6 +157,32 @@ body .article .title a:hover {
 }
 body .article .title span {
   color: #777777;
+}
+body .article .title .dropdown .btn {
+  background-color: transparent;
+  border: none;
+}
+body .article .title .dropdown .btn:hover svg {
+  fill: #333333;
+}
+body .article .title .dropdown .btn::after {
+  display: none;
+}
+body .article .title .dropdown .dropdown-menu {
+  left: auto !important;
+  right: 0 !important;
+}
+body .article .title .dropdown .dropdown-menu .dropdown-item {
+  cursor: pointer;
+  font-weight: 300;
+  margin: 0;
+  padding: 0.5rem 1rem !important;
+}
+body .article .title .dropdown .dropdown-menu .dropdown-item input {
+  display: none;
+}
+body .article a h5:hover {
+  color: #4c8eab;
 }
 body .article h3 {
   font-size: 2rem !important;
@@ -211,6 +248,9 @@ body .user div a:hover {
 }
 body .user div div {
   color: #777777;
+}
+body .user div input {
+  display: none;
 }
 body .messenger {
   position: fixed;

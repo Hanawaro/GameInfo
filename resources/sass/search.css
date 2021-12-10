@@ -1,6 +1,3 @@
-main .container-lg * {
-  color: #333333;
-}
 main .container-lg > section, main .container-lg .article, main .container-lg .user {
   background-color: white;
   margin-bottom: 12px;
@@ -38,21 +35,32 @@ main .container-lg section nav .nav a {
   padding-right: 0;
   padding-left: 0;
   line-height: 2rem;
-  text-transform: uppercase;
-  font-weight: 500;
-  color: #6f7577;
-  transition: 0.2s color;
   margin-right: 24px;
   background-color: transparent;
   border: none;
 }
-main .container-lg section nav .nav a:hover {
-  color: #587c99;
+main .container-lg section nav .nav a label {
+  color: #6f7577 !important;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: 0.2s color;
+}
+main .container-lg section nav .nav a:hover label {
+  color: #4d80aa !important;
 }
 main .container-lg section nav .nav a.active {
-  color: #587c99;
   background-color: transparent;
-  border-bottom: 2px solid #587c99;
+  border-bottom: 2px solid #4d80aa;
+}
+main .container-lg section nav .nav a.active label {
+  color: #4d80aa !important;
+}
+main .container-lg section nav .nav a label {
+  cursor: pointer;
+  margin: 0;
+}
+main .container-lg section nav .nav a label input {
+  display: none;
 }
 
 /*# sourceMappingURL=search.css.map */

@@ -16,13 +16,12 @@
     <title>@yield('title')</title>
 
     <script src="{{ asset('js/app.js') }}"></script>
-
 </head>
 <body>
 
 <nav class="navbar navbar-dark py-0 border-bottom">
     <div class="container d-flex align-content-between dropdown" id="dropdownMenuButton">
-        <a class="navbar-brand logo" href="{{ route('home') }}">GameInfo</a>
+        <a class="navbar-brand logo" href="{{ route('article.all') }}">GameInfo</a>
 
         <div class="d-flex align-items-center ">
             <a href="{{ route('search') }}">
@@ -32,37 +31,37 @@
                 </svg>
             </a>
 
-            {{--            guest --}}
-            <a href="{{ route('login') }}">
-                <svg height="24" width="24">
-                    <title>Авторизоваться</title>
-                    <use xlink:href="{{ asset('storage/img/icons.svg') }}#header-user"></use>
-                </svg>
-            </a>
+            @guest()
+                <a href="{{ route('login') }}">
+                    <svg height="24" width="24">
+                        <title>Авторизоваться</title>
+                        <use xlink:href="{{ asset('storage/img/icons.svg') }}#header-user"></use>
+                    </svg>
+                </a>
+            @endguest
 
 
-            {{--            auth --}}
-            <a href="{{ route('create') }}">
-                <svg height="24" width="24">
-                    <title>Написать публикацию</title>
-                    <use xlink:href="{{ asset('storage/img/icons.svg') }}#write"></use>
-                </svg>
-            </a>
+            @auth()
+                @can('editor', \Illuminate\Support\Facades\Auth::user())
+                    <a href="{{ route('editor.create') }}">
+                        <svg height="24" width="24">
+                            <title>Написать публикацию</title>
+                            <use xlink:href="{{ asset('storage/img/icons.svg') }}#write"></use>
+                        </svg>
+                    </a>
+                @endcan
 
-            {{--            <button class="btn px-0 py-0" type="button" data-toggle="dropdown" aria-expanded="false">--}}
-            {{--                <img src="{{ asset('storage/img/user.svg') }}" alt="Профиль" title="Профиль">--}}
-            {{--            </button>--}}
-            <button class="btn px-0 py-0" type="button" data-toggle="dropdown" aria-expanded="false">
-                <svg class="default" height="24" width="24">
-                    <title>Профиль</title>
-                    <use xlink:href="{{ asset('storage/img/icons.svg') }}#placeholder-user"></use>
-                </svg>
-            </button>
+                <button class="btn px-0 py-0" type="button" data-toggle="dropdown" aria-expanded="false">
+                    <svg class="default" height="24" width="24">
+                        <title>Профиль</title>
+                        <use xlink:href="{{ asset('storage/img/icons.svg') }}#placeholder-user"></use>
+                    </svg>
+                </button>
 
-            <div class="dropdown-menu shadow mt-2" aria-labelledby="dropdownMenuButton" data-spy="scroll"
-                 data-offset="0">
+                <div class="dropdown-menu shadow mt-2" aria-labelledby="dropdownMenuButton" data-spy="scroll"
+                     data-offset="0">
 
-                <div class="profile-start-section d-flex align-items-center">
+                    <div class="profile-start-section d-flex align-items-center">
                     <span>
 {{--                        <img src="{{ asset('storage/img/user.svg') }}" alt="Профиль" title="Профиль">--}}
                         <svg class="default" height="24" width="24">
@@ -70,39 +69,42 @@
                             <use xlink:href="{{ asset('storage/img/icons.svg') }}#placeholder-user"></use>
                         </svg>
                     </span>
-                    <span href="#">@profile-index</span>
+                        <span href="#">{{ '@' . \Illuminate\Support\Facades\Auth::user()->name }}</span>
+                    </div>
+
+                    <div class="dropdown-divider"></div>
+
+
+                    <a class="dropdown-item" href="{{ route('user.get', \Illuminate\Support\Facades\Auth::user()->name) }}">Профиль</a>
+
+                    <div class="dropdown-divider"></div>
+
+                    <a class="dropdown-item" href="#">Правила сайта</a>
+
+                    <div class="dropdown-divider"></div>
+
+
+                    <div class="profile-end-section">
+                        <a class="dropdown-item" href="{{ route('settings') }}">
+                            <svg height="24" width="24" class="mr-2">
+                                <title>Настройка</title>
+                                <use xlink:href="{{ asset('storage/img/icons.svg') }}#settings"></use>
+                            </svg>
+                            <span>Настройки</span>
+                        </a>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button class="dropdown-item">
+                                <svg height="24" width="24" class="mr-2">
+                                    <title>Выйти</title>
+                                    <use xlink:href="{{ asset('storage/img/icons.svg') }}#logout"></use>
+                                </svg>
+                                <span>Выход</span>
+                            </button>
+                        </form>
+                    </div>
                 </div>
-
-                <div class="dropdown-divider"></div>
-
-
-                <a class="dropdown-item" href="#">Статьи</a>
-                {{--                <a class="dropdown-item" href="#">Комментарии</a>--}}
-
-                <div class="dropdown-divider"></div>
-
-                <a class="dropdown-item" href="#">Правила сайта</a>
-
-                <div class="dropdown-divider"></div>
-
-
-                <div class="profile-end-section">
-                    <a class="dropdown-item" href="{{ route('settings') }}">
-                        <svg height="24" width="24" class="mr-2">
-                            <title>Настройка</title>
-                            <use xlink:href="{{ asset('storage/img/icons.svg') }}#settings"></use>
-                        </svg>
-                        <span>Настройки</span>
-                    </a>
-                    <a class="dropdown-item" href="#">
-                        <svg height="24" width="24" class="mr-2">
-                            <title>Выйти</title>
-                            <use xlink:href="{{ asset('storage/img/icons.svg') }}#logout"></use>
-                        </svg>
-                        <span>Выход</span>
-                    </a>
-                </div>
-            </div>
+            @endauth
 
         </div>
 
