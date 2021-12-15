@@ -84,10 +84,10 @@
             <svg height="24" width="24">
                 <use xlink:href="{{ asset('storage/img/icons.svg') }}#counter-rating"></use>
             </svg>
-            @if($article->like - $article->dislike > 0)
-                <span class="positive">+{{ $article->like - $article->dislike }}</span>
-            @elseif($article->like - $article->dislike < 0)
-                <span class="negative">{{ $article->like - $article->dislike }}</span>
+            @if($article->rate() > 0)
+                <span class="positive">+{{ $article->rate() }}</span>
+            @elseif($article->rate() < 0)
+                <span class="negative">{{ $article->rate() }}</span>
             @else
                 <span>0</span>
             @endif

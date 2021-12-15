@@ -362,6 +362,36 @@ body {
         }
     }
 
+    .comment-form {
+        padding: 16px 20px;
+        border-bottom: 1px solid silver;
+        background-color: rgb(247, 247, 247);;
+
+        h5 {
+            font-weight: 500;
+            font-size: 0.8rem;
+            margin-bottom: 26px;
+        }
+        textarea {
+            width: 100%;
+            min-height: 5rem;
+            margin-bottom: 26px;
+            border: none;
+            outline: none;
+        }
+    }
+    .comment-header {
+        margin-top: 13px;
+        width: 100%;
+
+        & > div {
+            width: 100%;
+        }
+    }
+    .comment {
+        margin-bottom: 13px;
+    }
+
     .empty {
         color: rgb(119, 119, 119) !important;
 

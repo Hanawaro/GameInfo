@@ -28,4 +28,13 @@ class Article extends Model
     public function user() {
         return $this->belongsTo(User::class);
     }
+    public function rate() {
+        $likes = $this->hasMany(Like::class)->where('liked', true)->count();
+        $dislikes = $this->hasMany(Like::class)->where('liked', false)->count();
+
+        return $likes - $dislikes;
+    }
+    public function comments() {
+        return $this->hasMany(Comment::class)->orderBy('created_at', 'desc');
+    }
 }

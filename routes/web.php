@@ -24,6 +24,9 @@ Auth::routes();
 
 Route::get('/user/{name}', [UserController::class, 'index'])->name('user.get');
 Route::post('/article/delete/{id}', [UserController::class, 'delete'])->middleware('auth')->name('article.delete');
+Route::post('/article/comment/{id}', [UserController::class, 'comment'])->middleware('auth')->name('article.comment');
+Route::post('/article/comment/delete/{id}', [UserController::class, 'deleteComment'])->middleware('auth')->name('article.comment.delete');
+Route::post('/article/rate/{id}', [UserController::class, 'rate'])->name('article.rate');
 Route::post('/article/role/editor/{id}', [UserController::class, 'roleEditor'])->middleware('auth')->name('role.editor');
 Route::post('/article/role/user/{id}', [UserController::class, 'roleUser'])->middleware('auth')->name('role.user');
 
@@ -34,7 +37,7 @@ Route::post('/settings/password', [SettingsController::class, 'changePassword'])
 
 Route::get('/', [ArticlesController::class, 'indexAll'])->name('article.all');
 Route::get('/article/{id}', [ArticlesController::class, 'indexOne'])->name('article.get');
-Route::post('/article/rate/{id}', [ArticlesController::class, 'rate'])->name('article.rate');
+
 Route::get('/article/{global}/{local}', [ArticlesController::class, 'sortBy'])->name('article.sort');
 Route::post('/article/redirect', [ArticlesController::class, 'sortByRedirect'])->name('article.redirect');
 

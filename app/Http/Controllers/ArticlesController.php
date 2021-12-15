@@ -53,33 +53,6 @@ class ArticlesController extends Controller
             ->with('liked', $liked);
     }
 
-    public function rate(Request $request, $id) {
-
-        if (!Auth::check())
-            return redirect()->back();
-
-        if (array_key_exists('like', $request->post())) {
-            Article::where('id', $id)->increment('like');
-
-            Like::insert([
-                'user_id' => Auth::id(),
-                'article_id' => $id,
-                'published' => true
-            ]);
-        } else if (array_key_exists('dislike', $request->post())) {
-            Article::where('id', $id)->increment('dislike');
-
-            Like::insert([
-                'user_id' => Auth::id(),
-                'article_id' => $id,
-                'published' => true
-            ]);
-        }
-
-        return redirect()->back();
-    }
-
-
     public function sortByRedirect(Request $request)
     {
         return redirect()

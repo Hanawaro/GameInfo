@@ -5,9 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Like extends Model
+class Comment extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
+    public $timestamps = true;
+
+    public function user() {
+        return $this->belongsTo(User::class)->first();
+    }
 }

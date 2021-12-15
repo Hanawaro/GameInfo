@@ -282,6 +282,33 @@ body .messenger .alert.active {
   transform: translateY(0%) translateX(-50%);
   opacity: 1;
 }
+body .comment-form {
+  padding: 16px 20px;
+  border-bottom: 1px solid silver;
+  background-color: #f7f7f7;
+}
+body .comment-form h5 {
+  font-weight: 500;
+  font-size: 0.8rem;
+  margin-bottom: 26px;
+}
+body .comment-form textarea {
+  width: 100%;
+  min-height: 5rem;
+  margin-bottom: 26px;
+  border: none;
+  outline: none;
+}
+body .comment-header {
+  margin-top: 13px;
+  width: 100%;
+}
+body .comment-header > div {
+  width: 100%;
+}
+body .comment {
+  margin-bottom: 13px;
+}
 body .empty {
   color: #777777 !important;
 }

@@ -79,10 +79,10 @@
                 <svg height="24" width="24">
                     <use xlink:href="{{ asset('storage/img/icons.svg') }}#counter-rating"></use>
                 </svg>
-                @if($article->like - $article->dislike > 0)
-                    <span class="positive">+{{ $article->like - $article->dislike }}</span>
-                @elseif($article->like - $article->dislike < 0)
-                    <span class="negative">{{ $article->like - $article->dislike }}</span>
+                @if($article->rate() > 0)
+                    <span class="positive">+{{ $article->rate() }}</span>
+                @elseif($article->rate() < 0)
+                    <span class="negative">{{ $article->rate() }}</span>
                 @else
                     <span>0</span>
                 @endif
@@ -102,15 +102,39 @@
         </div>
 
         @auth
-        @if($liked === null)
             <form class="d-flex" action="{{ route('article.rate', $article->id) }}" method="POST">
                 @csrf
 
-                <button type="submit" name="like" class="btn btn-outline-success mr-3">Like</button>
-                <button type="submit" name="dislike" class="btn btn-outline-danger">Dislike</button>
+                <button type="submit" name="like" class="btn btn-outline-success mr-3 @if(isset($liked) && $liked->liked) active @endif">Like</button>
+                <button type="submit" name="dislike" class="btn btn-outline-danger @if(isset($liked) && !$liked->liked) active @endif">Dislike</button>
             </form>
-        @endif
         @endauth
 
     </div>
+
+</div>
+
+@auth
+<form class="comment-form" method="POST" action="{{ route('article.comment', $article->id) }}">
+    @csrf
+
+    <h5>Написать комментарий</h5>
+    <textarea class="form-control" name="value" cols="30" rows="10"></textarea>
+    <input type="submit" class="btn btn-outline-primary">
+
+</form>
+@endauth
+<div class="article">
+
+
+    @foreach($article->comments()->get() as $comment)
+        @include('template.comment', ['comment' => $comment])
+    @endforeach
+
+    @if($article->comments()->count() === 0)
+            <div class="empty d-flex align-items-center flex-column" style="width: 100%">
+
+                Ни одного комментария пока что нет
+            </div>
+    @endif
 </div>

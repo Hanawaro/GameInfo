@@ -16,9 +16,6 @@ class CreateArticlesTable extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->integer('like')->default(0);
-            $table->integer('dislike')->default(0);
-            $table->integer('rate')->virtualAs('(`like` - `dislike`)');
             $table->integer('views')->default(0);
             $table->timestamps();
         });
