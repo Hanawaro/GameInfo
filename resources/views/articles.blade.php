@@ -22,7 +22,7 @@
                         <use xlink:href="{{ asset('storage/img/icons.svg') }}#arrow-down"></use>
                     </svg>
                 </a>
-                <a id="copy" class="" href="#">
+                <a id="copy" class="">
                     <svg height="24" width="24" class="mx-2">
                         <title>Скопировать</title>
                         <use xlink:href="{{ asset('storage/img/icons.svg') }}#rss"></use>
@@ -30,7 +30,7 @@
                 </a>
             </div>
             <div class="collapse" id="collapse">
-                <form method="POST" action="{{ route('sortByRedirect') }}">
+                <form method="POST" action="{{ route('article.redirect') }}">
                     @csrf()
 
                     <div>Сначала показывать</div>
@@ -118,7 +118,7 @@
     </section>
 
     @foreach($articles as $article)
-        @include('template.article', $article)
+        @include('template.article-preview', $article)
     @endforeach
 
     @if($articles->isEmpty())

@@ -1,6 +1,9 @@
 main .container-lg * {
   color: #333333;
 }
+main .container-lg #copy {
+  cursor: pointer;
+}
 main .container-lg .btn {
   color: #548eaa;
   border-color: #548eaa;

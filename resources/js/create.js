@@ -10,7 +10,7 @@ $(document).ready(function () {
             }
         });
 
-        let data = new FormData($('form')[0]);
+        let data = new FormData($('#form')[0]);
         data.append('article', JSON.stringify(article));
 
         $.ajax({
@@ -194,7 +194,7 @@ $(document).ready(function () {
                     <svg height="16" width="16" class="svg-icon"><path fill-rule="evenodd" clip-rule="evenodd" d="M7 9V16H9V9H16V7H9V0H7V7H0V9H7Z"></path></svg>
                 </div>
             </div>
-        `)
+        `);
 
         for (let index of article[articleClass].keys()) {
             if (article[articleClass][index]['id'] === after) {
@@ -207,10 +207,17 @@ $(document).ready(function () {
             }
         }
 
-        $('.editor .dropdown-item').off('click').on('click', function () {
+        let element = $(`.${id} .content`);
+
+        setTimeout(function () {
+            element.focus();
+        }, 100)
+
+
+        $('.editor .dropdown-item').off().on('click', function () {
             add(this);
         });
-        $('.editor .remove').off('click').on('click', function () {
+        $('.editor .remove').off().on('click', function () {
             remove(this);
         });
         $('.editor .content')
@@ -225,7 +232,7 @@ $(document).ready(function () {
                 document.execCommand("insertHTML", false, text);
             });
 
-        $('.editor .content .btn').on('click', function () {
+        $('.editor .content .btn').off().on('click', function () {
             let element = $(this).parent().find('input').first();
 
             setTimeout(function () {
@@ -235,6 +242,7 @@ $(document).ready(function () {
     }
 
     function remove(value) {
+
         let btn = $(value);
         let container = btn.parent();
         let articleClass = container.parent().parent().attr('class');
@@ -245,7 +253,7 @@ $(document).ready(function () {
 
         for (let index of article[articleClass].keys()) {
             if (article[articleClass][index]['id'] === id) {
-                delete article[articleClass][index];
+                article[articleClass].splice(index, 1);
                 break;
             }
         }

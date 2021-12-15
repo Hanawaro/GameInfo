@@ -1,12 +1,10 @@
 {
-    "/js/app.js": "/js/app.js",
     "/js/main.js": "/js/main.js",
     "/js/create.js": "/js/create.js",
     "/css/main.css": "/css/main.css",
-    "/css/app.css": "/css/app.css",
+    "/css/create.css": "/css/create.css",
     "/css/auth.css": "/css/auth.css",
     "/css/search.css": "/css/search.css",
     "/css/home.css": "/css/home.css",
-    "/css/settings.css": "/css/settings.css",
-    "/css/create.css": "/css/create.css"
+    "/css/settings.css": "/css/settings.css"
 }

@@ -16,6 +16,13 @@ body {
         &:focus {
             box-shadow: none !important;
         }
+        &:hover {
+            text-decoration: none;
+        }
+
+        &:not(.btn) {
+            color: rgb(51, 51, 51);
+        }
     }
 
     .logo {
@@ -128,13 +135,11 @@ body {
     footer {
         .container {
             div {
+                color: white !important;
                 font-size: 0.875rem;
                 padding: 1rem 0;
 
                 a {
-                    color: white;
-
-
                     &:hover {
                         color: rgb(74, 114, 171);
                         text-decoration: none;
@@ -161,6 +166,9 @@ body {
     }
 
     .article {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
         padding: 16px 20px;
 
         svg {
@@ -168,10 +176,22 @@ body {
         }
 
         .title {
+            width: 100%;
             font-size: 0.82rem;
             margin-bottom: 12px;
 
+            svg, img {
+                width: 24px;
+                height: 24px;
+                margin: 0;
+            }
+
+            img {
+                border-radius: 4px;
+            }
+
             a {
+                padding: 0 !important;
                 font-weight: 700;
                 color: rgb(65, 75, 80);
                 margin-right: 2px;
@@ -185,7 +205,44 @@ body {
             span {
                 color: rgb(119, 119, 119);
             }
+
+            .dropdown {
+
+                .btn {
+                    background-color: transparent;
+                    border: none;
+
+                    &:hover svg {
+                        fill: rgb(51, 51, 51);
+                    }
+
+                    &::after {
+                        display: none;
+                    }
+                }
+
+                .dropdown-menu {
+                    left: auto !important;
+                    right: 0 !important;
+
+                    .dropdown-item {
+                        cursor: pointer;
+                        font-weight: 300;
+                        margin: 0;
+                        padding: 0.5rem 1rem !important;
+
+                        input {
+                            display: none;
+                        }
+                    }
+                }
+            }
         }
+
+        .header-link {
+            width: 100%;
+        }
+        a h5:hover { color: #4c8eab; }
 
         h3 {
             font-size: 2rem !important;
@@ -216,6 +273,7 @@ body {
             margin-top: 10px;
             margin-bottom: 24px;
         }
+
 
         .status-bar {
             gap: 32px;
@@ -252,6 +310,10 @@ body {
                 width: 40px;
                 fill: rgb(139, 170, 181);
             }
+
+            img {
+                border-radius: 0.5rem;
+            }
         }
 
         div {
@@ -271,6 +333,10 @@ body {
 
             div {
                 color: rgb(119, 119, 119);
+            }
+
+            input {
+                display: none;
             }
         }
     }
@@ -294,6 +360,36 @@ body {
                 opacity: 1;
             }
         }
+    }
+
+    .comment-form {
+        padding: 16px 20px;
+        border-bottom: 1px solid silver;
+        background-color: rgb(247, 247, 247);;
+
+        h5 {
+            font-weight: 500;
+            font-size: 0.8rem;
+            margin-bottom: 26px;
+        }
+        textarea {
+            width: 100%;
+            min-height: 5rem;
+            margin-bottom: 26px;
+            border: none;
+            outline: none;
+        }
+    }
+    .comment-header {
+        margin-top: 13px;
+        width: 100%;
+
+        & > div {
+            width: 100%;
+        }
+    }
+    .comment {
+        margin-bottom: 13px;
     }
 
     .empty {

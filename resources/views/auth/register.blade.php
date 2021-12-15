@@ -6,7 +6,7 @@
 @section('content')
 
     <section class="main">
-        <form class="d-flex flex-column" method="POST" action="/">
+        <form class="d-flex flex-column" method="POST" action="{{ route('register') }}">
             @csrf()
 
             <h3>Регистрация</h3>
@@ -14,11 +14,15 @@
             <div class="form-group">
                 <label>
                     <span>E-mail</span>
-                    <input name="email" type="email" class="form-control is-invalid" aria-describedby="emailFeedback"
+                    <input name="email" type="email" value="{{ old('email') }}"
+                           class="form-control @error('email') is-invalid @enderror" aria-describedby="emailFeedback"
                            required>
+
+                    @error('email')
                     <span id="emailFeedback" class="invalid-feedback">
-                        Error
-                    </span>
+                            {{ $message }}
+                        </span>
+                    @enderror
                 </label>
 
             </div>
@@ -26,37 +30,42 @@
             <div class="form-group">
                 <label>
                     <span>Никнейм</span>
-                    <input name="nickname" type="text" class="form-control" aria-describedby="nicknameFeedback"
+                    <input name="name" type="text" value="{{ old('name') }}"
+                           class="form-control @error('name') is-invalid @enderror" aria-describedby="nicknameFeedback"
                            required>
+
+                    @error('name')
                     <span id="nicknameFeedback" class="invalid-feedback">
-                        Error
-                    </span>
+                            {{ $message }}
+                        </span>
+                    @enderror
                 </label>
             </div>
 
             <div class="form-group">
                 <label>
                     <span>Пароль</span>
-                    <input name="password" type="password" class="form-control" aria-describedby="passwordFeedback"
+                    <input name="password" type="password" class="form-control @error('password') is-invalid @enderror"
+                           aria-describedby="passwordFeedback"
                            required>
+
+                    @error('password')
                     <span id="passwordFeedback" class="invalid-feedback">
-                        Error
-                    </span>
+                            {{ $message }}
+                        </span>
+                    @enderror
                 </label>
             </div>
 
             <div class="form-group">
                 <label>
                     <span>Пароль ещё раз</span>
-                    <input name="re-password" type="password" class="form-control"
+                    <input name="password_confirmation" type="password" class="form-control"
                            aria-describedby="repeatPasswordFeedback" required>
-                    <span id="repeatPasswordFeedback" class="invalid-feedback">
-                        Error
-                    </span>
                 </label>
             </div>
 
-            <button name="register" type="submit" class="btn btn-primary">Зарегестрироваться</button>
+            <button type="submit" class="btn btn-primary">Зарегестрироваться</button>
         </form>
     </section>
 

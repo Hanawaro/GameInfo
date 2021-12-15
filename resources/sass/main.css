@@ -15,6 +15,12 @@ body * {
 body *:focus {
   box-shadow: none !important;
 }
+body *:hover {
+  text-decoration: none;
+}
+body *:not(.btn) {
+  color: #333333;
+}
 body .logo {
   font-family: "Oxygen", sans-serif;
   font-weight: bold;
@@ -102,11 +108,9 @@ body main > * {
   }
 }
 body footer .container div {
+  color: white !important;
   font-size: 0.875rem;
   padding: 1rem 0;
-}
-body footer .container div a {
-  color: white;
 }
 body footer .container div a:hover {
   color: #4a72ab;
@@ -126,16 +130,29 @@ body .article, body .user {
   margin-bottom: 12px;
 }
 body .article {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   padding: 16px 20px;
 }
 body .article svg {
   fill: #8baab5;
 }
 body .article .title {
+  width: 100%;
   font-size: 0.82rem;
   margin-bottom: 12px;
 }
+body .article .title svg, body .article .title img {
+  width: 24px;
+  height: 24px;
+  margin: 0;
+}
+body .article .title img {
+  border-radius: 4px;
+}
 body .article .title a {
+  padding: 0 !important;
   font-weight: 700;
   color: #414b50;
   margin-right: 2px;
@@ -146,6 +163,35 @@ body .article .title a:hover {
 }
 body .article .title span {
   color: #777777;
+}
+body .article .title .dropdown .btn {
+  background-color: transparent;
+  border: none;
+}
+body .article .title .dropdown .btn:hover svg {
+  fill: #333333;
+}
+body .article .title .dropdown .btn::after {
+  display: none;
+}
+body .article .title .dropdown .dropdown-menu {
+  left: auto !important;
+  right: 0 !important;
+}
+body .article .title .dropdown .dropdown-menu .dropdown-item {
+  cursor: pointer;
+  font-weight: 300;
+  margin: 0;
+  padding: 0.5rem 1rem !important;
+}
+body .article .title .dropdown .dropdown-menu .dropdown-item input {
+  display: none;
+}
+body .article .header-link {
+  width: 100%;
+}
+body .article a h5:hover {
+  color: #4c8eab;
 }
 body .article h3 {
   font-size: 2rem !important;
@@ -198,6 +244,9 @@ body .user a img, body .user a svg {
   width: 40px;
   fill: #8baab5;
 }
+body .user a img {
+  border-radius: 0.5rem;
+}
 body .user div * {
   font-size: 0.82rem;
 }
@@ -210,6 +259,9 @@ body .user div a:hover {
 }
 body .user div div {
   color: #777777;
+}
+body .user div input {
+  display: none;
 }
 body .messenger {
   position: fixed;
@@ -228,6 +280,33 @@ body .messenger .alert {
 body .messenger .alert.active {
   transform: translateY(0%) translateX(-50%);
   opacity: 1;
+}
+body .comment-form {
+  padding: 16px 20px;
+  border-bottom: 1px solid silver;
+  background-color: #f7f7f7;
+}
+body .comment-form h5 {
+  font-weight: 500;
+  font-size: 0.8rem;
+  margin-bottom: 26px;
+}
+body .comment-form textarea {
+  width: 100%;
+  min-height: 5rem;
+  margin-bottom: 26px;
+  border: none;
+  outline: none;
+}
+body .comment-header {
+  margin-top: 13px;
+  width: 100%;
+}
+body .comment-header > div {
+  width: 100%;
+}
+body .comment {
+  margin-bottom: 13px;
 }
 body .empty {
   color: #777777 !important;
