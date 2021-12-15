@@ -6,7 +6,7 @@
 
 @section('content')
 
-    <form method="POST" enctype="multipart/form-data">
+    <form id="form" method="POST" enctype="multipart/form-data">
 
     <section class="preview">
         <div class="header">
@@ -76,17 +76,9 @@
     </form>
 
     <div class="messenger container-sm">
-        <div class="alert alert-success" role="alert">
-            Success
-        </div>
         <div class="alert alert-danger" role="alert">
-            Error
+            Ошибка сервера
         </div>
     </div>
-
-    <script>
-
-
-    </script>
 
 @endsection

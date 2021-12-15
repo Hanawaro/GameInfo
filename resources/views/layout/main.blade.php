@@ -52,10 +52,14 @@
                 @endcan
 
                 <button class="btn px-0 py-0" type="button" data-toggle="dropdown" aria-expanded="false">
-                    <svg class="default" height="24" width="24">
-                        <title>Профиль</title>
-                        <use xlink:href="{{ asset('storage/img/icons.svg') }}#placeholder-user"></use>
-                    </svg>
+                    @if(empty(\Illuminate\Support\Facades\Auth::user()->photo))
+                        <svg class="default" height="24" width="24">
+                            <title>Профиль</title>
+                            <use xlink:href="{{ asset('storage/img/icons.svg') }}#placeholder-user"></use>
+                        </svg>
+                    @else
+                        <img src="{{ asset('storage/' . \Illuminate\Support\Facades\Auth::user()->photo) }}" alt="">
+                    @endif
                 </button>
 
                 <div class="dropdown-menu shadow mt-2" aria-labelledby="dropdownMenuButton" data-spy="scroll"
@@ -63,11 +67,14 @@
 
                     <div class="profile-start-section d-flex align-items-center">
                     <span>
-{{--                        <img src="{{ asset('storage/img/user.svg') }}" alt="Профиль" title="Профиль">--}}
-                        <svg class="default" height="24" width="24">
-                            <title>Профиль</title>
-                            <use xlink:href="{{ asset('storage/img/icons.svg') }}#placeholder-user"></use>
-                        </svg>
+                         @if(empty(\Illuminate\Support\Facades\Auth::user()->photo))
+                            <svg class="default" height="24" width="24">
+                                <title>Профиль</title>
+                                <use xlink:href="{{ asset('storage/img/icons.svg') }}#placeholder-user"></use>
+                            </svg>
+                        @else
+                            <img src="{{ asset('storage/' . \Illuminate\Support\Facades\Auth::user()->photo) }}" alt="profile" style="border: none">
+                        @endif
                     </span>
                         <span href="#">{{ '@' . \Illuminate\Support\Facades\Auth::user()->name }}</span>
                     </div>
@@ -85,7 +92,7 @@
 
 
                     <div class="profile-end-section">
-                        <a class="dropdown-item" href="{{ route('settings') }}">
+                        <a class="dropdown-item" href="{{ route('user.settings') }}">
                             <svg height="24" width="24" class="mr-2">
                                 <title>Настройка</title>
                                 <use xlink:href="{{ asset('storage/img/icons.svg') }}#settings"></use>
@@ -156,7 +163,7 @@
                 </svg>
             </a>
         </div>
-        <div class="col-md d-flex justify-content-md-start justify-content-center">© 2021–2022 «GameInfo»</div>
+        <div class="col-md d-flex justify-content-md-start justify-content-center">© 2021–{{ date("Y") }} «GameInfo»</div>
     </div>
 </footer>
 

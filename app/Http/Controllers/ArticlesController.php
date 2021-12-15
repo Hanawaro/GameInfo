@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Like;
 use App\Models\Preview;
 use DateInterval;
 use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ArticlesController extends Controller
 {
@@ -21,9 +23,62 @@ class ArticlesController extends Controller
 
     }
 
-    public function indexOne($id) {
-        return $id;
+    public function indexOne(Request $request, $id) {
+
+        $article = Article::where('id', $id)->first();
+        if (Auth::check())
+            $liked = Like::where('article_id', $id)
+                ->where('user_id', Auth::id())->first();
+        else
+            $liked = null;
+
+
+        if (!$request->session()->has('views')) {
+            $request->session()->put('views', collect($id));
+
+            $article->increment('views');
+            $article->save();
+
+        } else {
+            if (!$request->session()->get('views')->contains($id)) {
+                $request->session()->put('views', $request->session()->get('views')->push($id));
+
+                $article->increment('views');
+                $article->save();
+            }
+        }
+
+        return view('article')
+            ->with('article', $article)
+            ->with('liked', $liked);
     }
+
+    public function rate(Request $request, $id) {
+
+        if (!Auth::check())
+            return redirect()->back();
+
+        if (array_key_exists('like', $request->post())) {
+            Article::where('id', $id)->increment('like');
+
+            Like::insert([
+                'user_id' => Auth::id(),
+                'article_id' => $id,
+                'published' => true
+            ]);
+        } else if (array_key_exists('dislike', $request->post())) {
+            Article::where('id', $id)->increment('dislike');
+
+            Like::insert([
+                'user_id' => Auth::id(),
+                'article_id' => $id,
+                'published' => true
+            ]);
+        }
+
+        return redirect()->back();
+    }
+
 
     public function sortByRedirect(Request $request)
     {

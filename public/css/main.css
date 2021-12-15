@@ -108,11 +108,9 @@ body main > * {
   }
 }
 body footer .container div {
+  color: white !important;
   font-size: 0.875rem;
   padding: 1rem 0;
-}
-body footer .container div a {
-  color: white;
 }
 body footer .container div a:hover {
   color: #4a72ab;
@@ -144,6 +142,14 @@ body .article .title {
   width: 100%;
   font-size: 0.82rem;
   margin-bottom: 12px;
+}
+body .article .title svg, body .article .title img {
+  width: 24px;
+  height: 24px;
+  margin: 0;
+}
+body .article .title img {
+  border-radius: 4px;
 }
 body .article .title a {
   padding: 0 !important;
@@ -180,6 +186,9 @@ body .article .title .dropdown .dropdown-menu .dropdown-item {
 }
 body .article .title .dropdown .dropdown-menu .dropdown-item input {
   display: none;
+}
+body .article .header-link {
+  width: 100%;
 }
 body .article a h5:hover {
   color: #4c8eab;
@@ -235,6 +244,9 @@ body .user a img, body .user a svg {
   height: 40px;
   width: 40px;
   fill: #8baab5;
+}
+body .user a img {
+  border-radius: 0.5rem;
 }
 body .user div * {
   font-size: 0.82rem;

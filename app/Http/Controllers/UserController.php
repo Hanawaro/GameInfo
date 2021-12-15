@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Like;
 use App\Models\Preview;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -24,10 +26,23 @@ class UserController extends Controller
 
         DB::beginTransaction();
 
+        $imgToDelete = collect();
+
         try {
+
+            foreach($article->previews()->get() as $element) {
+                if ($element->element === 'img')
+                    $imgToDelete->push($element->value);
+            }
+            foreach($article->contents()->get() as $element) {
+                if ($element->element === 'img')
+                    $imgToDelete->push($element->value);
+            }
+            Like::where('article_id', $id)->delete();
 
             $article->previews()->delete();
             $article->contents()->delete();
+
             $article->delete();
 
             DB::commit();
@@ -35,12 +50,16 @@ class UserController extends Controller
             DB::rollBack();
         }
 
+        foreach ($imgToDelete as $img) {
+            Storage::delete($img);
+        }
+
         return redirect()->back();
     }
 
     public function roleEditor($id) {
         $this->authorize('admin', Auth::user());
-        $user = User::find($id)->first();
+        $user = User::where('id', $id)->first();
 
         $user->role_id = Role::where('role', 'editor')->first()->id;
         $user->save();
@@ -50,7 +69,7 @@ class UserController extends Controller
 
     public function roleUser($id) {
         $this->authorize('admin', Auth::user());
-        $user = User::find($id)->first();
+        $user = User::where('id', $id)->first();
 
         $user->role_id = Role::where('role', 'user')->first()->id;
         $user->save();

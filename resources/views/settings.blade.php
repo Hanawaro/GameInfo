@@ -20,28 +20,32 @@
             </svg>
         </div>
 
-        <div id="photoCollapse" class="menu collapse" aria-labelledby="photoHeader" data-parent="#photo">
-            <form class="content" method="POST" action="/">
+        <div id="photoCollapse" class="menu collapse @if($errors->has('file') || $errors->has('file_password')) show @endif" aria-labelledby="photoHeader" data-parent="#photo">
+            <form class="content" method="POST" action="{{ route('user.change_photo') }}" enctype="multipart/form-data">
                 @csrf()
 
-                <div class="custom-file is-invalid">
+                <div class="custom-file @error('file') is-invalid @enderror">
                     <label class="custom-file-label">
                         Выберите фото...
-                        <input type="file" class="custom-file-input" aria-describedby="fileFeedback">
+                        <input name="file" type="file" class="custom-file-input" aria-describedby="fileFeedback">
                     </label>
                 </div>
-                <div id="fileFeedback" class="invalid-feedback">
-                    Error
-                </div>
+                @error('file')
+                    <div id="fileFeedback" class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
 
                 <div class="form-group">
                     <label>
                         <span>Пароль для подтверждения</span>
-                        <input name="password" type="password" class="form-control" aria-describedby="passwordFeedback"
+                        <input name="file_password" type="password" class="form-control @error('file_password') is-invalid @enderror" aria-describedby="passwordFeedback"
                                required>
+                        @error('file_password')
                         <span id="passwordFeedback" class="invalid-feedback">
-                        Error
+                        {{ $message }}
                         </span>
+                        @enderror
                     </label>
                 </div>
                 <button name="login" type="submit" class="btn btn-primary">Cохранить</button>
@@ -64,33 +68,37 @@
             </svg>
         </div>
 
-        <div id="mailCollapse" class="menu collapse" aria-labelledby="mailHeader" data-parent="#mail">
-            <form class="content" method="POST" action="/">
+        <div id="mailCollapse" class="menu collapse @if($errors->has('email') || $errors->has('email_password')) show @endif" aria-labelledby="mailHeader" data-parent="#mail">
+            <form class="content" method="POST" action="{{ route('user.change_email') }}">
                 @csrf()
                 <div class="form-group">
                     <label>
                         <span>Текущий e-mail</span>
-                        <input type="email" class="form-control" value="hanawaro3@gmail.com" readonly>
+                        <input type="email" class="form-control" value="{{ \Illuminate\Support\Facades\Auth::user()->email}}" readonly>
                     </label>
                 </div>
                 <div class="form-group">
                     <label>
                         <span>Новый e-mail</span>
-                        <input name="email" type="email" class="form-control is-invalid"
+                        <input name="email" type="email" class="form-control @error('email') is-invalid @enderror"
                                aria-describedby="emailFeedback" required>
+                        @error('email')
                         <span id="emailFeedback" class="invalid-feedback">
-                        Error
+                        {{ $message }}
                         </span>
+                        @enderror
                     </label>
                 </div>
                 <div class="form-group">
                     <label>
                         <span>Пароль для подтверждения</span>
-                        <input name="password" type="password" class="form-control" aria-describedby="passwordFeedback"
+                        <input name="email_password" type="password" class="form-control @error('email_password') is-invalid @enderror" aria-describedby="passwordFeedback"
                                required>
+                        @error('email_password')
                         <span id="passwordFeedback" class="invalid-feedback">
-                        Error
+                        {{ $message }}
                         </span>
+                        @enderror
                     </label>
                 </div>
                 <button name="login" type="submit" class="btn btn-primary">Cохранить</button>
@@ -113,37 +121,43 @@
             </svg>
         </div>
 
-        <div id="passwordCollapse" class="menu collapse" aria-labelledby="passwordHeader" data-parent="#password">
-            <form class="content" method="POST" action="/">
+        <div id="passwordCollapse" class="menu collapse @if($errors->has('old_password') || $errors->has('new_password')) show @endif" aria-labelledby="passwordHeader" data-parent="#password">
+            <form class="content" method="POST" action="{{ route('user.change_password') }}">
                 @csrf()
                 <div class="form-group">
                     <label>
                         <span>Текуший пароль</span>
-                        <input name="old-password" type="password" class="form-control is-invalid"
+                        <input name="old_password" type="password" class="form-control @error('old_password') is-invalid @enderror"
                                aria-describedby="oldPasswordFeedback" required>
+                        @error('old_password')
                         <span id="oldPasswordFeedback" class="invalid-feedback">
-                        Error
-                    </span>
+                        {{ $message }}
+                        </span>
+                        @enderror
                     </label>
                 </div>
                 <div class="form-group">
                     <label>
                         <span>Новый пароль</span>
-                        <input name="new-password" type="password" class="form-control"
+                        <input name="new_password" type="password" class="form-control @error('new_password') is-invalid @enderror"
                                aria-describedby="newPasswordFeedback" required>
+                        @error('new_password')
                         <span id="newPasswordFeedback" class="invalid-feedback">
-                        Error
-                    </span>
+                        {{ $message }}
+                        </span>
+                        @enderror
                     </label>
                 </div>
                 <div class="form-group">
                     <label>
                         <span>Новый пароль ещё раз</span>
-                        <input name="re-password" type="password" class="form-control"
+                        <input name="new_password_confirmation" type="password" class="form-control @error('new_password') is-invalid @enderror"
                                aria-describedby="repasswordFeedback" required>
+                        @error('new_password_confirmation')
                         <span id="repasswordFeedback" class="invalid-feedback">
-                        Error
-                    </span>
+                        {{ $message }}
+                        </span>
+                        @enderror
                     </label>
                 </div>
                 <button name="login" type="submit" class="btn btn-primary">Cохранить</button>

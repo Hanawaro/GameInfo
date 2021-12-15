@@ -1,11 +1,14 @@
 <div class="user d-flex justify-content-between align-items-center">
     <div class="d-flex align-items-center">
         <a href="{{ route('user.get', $user->name) }}">
-            {{--                    <img src="" alt="">--}}
-            <svg class="default" height="24" width="24">
-                <title>Профиль</title>
-                <use xlink:href="{{ asset('storage/img/icons.svg') }}#placeholder-user"></use>
-            </svg>
+            @if(empty($user->photo))
+                <svg class="default" height="24" width="24">
+                    <title>Профиль</title>
+                    <use xlink:href="{{ asset('storage/img/icons.svg') }}#placeholder-user"></use>
+                </svg>
+            @else
+                <img src="{{ asset('storage/' . $user->photo) }}" alt="profile" style="border: none">
+            @endif
         </a>
         <div class="d-flex flex-column">
             <a href="{{ route('user.get', $user->name) }}">{{ '@' . $user->name }}</a>

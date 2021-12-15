@@ -135,13 +135,11 @@ body {
     footer {
         .container {
             div {
+                color: white !important;
                 font-size: 0.875rem;
                 padding: 1rem 0;
 
                 a {
-                    color: white;
-
-
                     &:hover {
                         color: rgb(74, 114, 171);
                         text-decoration: none;
@@ -181,6 +179,16 @@ body {
             width: 100%;
             font-size: 0.82rem;
             margin-bottom: 12px;
+
+            svg, img {
+                width: 24px;
+                height: 24px;
+                margin: 0;
+            }
+
+            img {
+                border-radius: 4px;
+            }
 
             a {
                 padding: 0 !important;
@@ -231,6 +239,9 @@ body {
             }
         }
 
+        .header-link {
+            width: 100%;
+        }
         a h5:hover { color: #4c8eab; }
 
         h3 {
@@ -262,6 +273,7 @@ body {
             margin-top: 10px;
             margin-bottom: 24px;
         }
+
 
         .status-bar {
             gap: 32px;
@@ -297,6 +309,10 @@ body {
                 height: 40px;
                 width: 40px;
                 fill: rgb(139, 170, 181);
+            }
+
+            img {
+                border-radius: 0.5rem;
             }
         }
 

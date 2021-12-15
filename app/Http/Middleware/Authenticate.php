@@ -25,8 +25,12 @@ class Authenticate extends Middleware
     {
         $response = $next($request);
 
-        if ($response->exception != null)
-            return redirect()->route('articles');
+        if ($response->exception != null) {
+            if (isset($response->exception->status) && $response->exception->status != 422)
+                return redirect()->route('article.all');
+            else if (!isset($response->exception->status))
+                return redirect()->route('article.all');
+        }
 
         return $response;
     }

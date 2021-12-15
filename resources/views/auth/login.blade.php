@@ -37,6 +37,7 @@
                     @enderror
                 </label>
             </div>
+            <input type="checkbox" name="remember" style="display: none" checked>
             <button type="submit" class="btn btn-primary">Войти</button>
             <a href="{{ route('password.request') }}">Забыли пароль?</a>
         </form>

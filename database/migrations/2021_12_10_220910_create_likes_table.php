@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateUsersTable extends Migration
+class CreateLikesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class UpdateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('photo')->after('email')->default('');
-            $table->integer('role_id')->after('photo')->default(1);
+        Schema::create('likes', function (Blueprint $table) {
+            $table->id();
+            $table->integer('user_id');
+            $table->integer('article_id');
+            $table->boolean('published');
         });
     }
 
@@ -26,6 +28,6 @@ class UpdateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('likes');
     }
 }

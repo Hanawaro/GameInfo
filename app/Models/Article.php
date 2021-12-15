@@ -11,6 +11,12 @@ class Article extends Model
 
     public $timestamps = true;
 
+    protected $fillable = [
+        'views',
+        'like',
+        'dislike',
+    ];
+
     public function previews()
     {
         return $this->hasMany(Preview::class);

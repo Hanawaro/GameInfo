@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Content;
 use App\Models\Preview;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -34,38 +35,13 @@ class CreateController extends Controller
                 'updated_at' => Carbon::now()->toDateTimeString()
             ]);
 
-            foreach ($article->preview as $statement) {
+            $this->push($request, $article->preview, $id, function ($value) {
+                return Preview::insert($value);
+            });
 
-                $type = $statement->type;
-                if ($type === 'img') {
-                    $value = $statement->id;
-
-                    if ($request->hasFile($value)) {
-                        $value = $request->file($value)->store('articles');
-                    }
-
-                } else if ($type === 'video') {
-                    $value = preg_replace(
-                        "/\s*[a-zA-Z\/\/:\.]*youtube.com\/watch\?v=([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
-                        "https://www.youtube.com/embed/$1",
-                        $request[$statement->id]);
-                } else {
-                    $value = $statement->value;
-                }
-
-                if ($statement->id === 'preview-header' || $statement->id === 'content-header') {
-                    if (empty($value))
-                        throw new \Exception();
-                }
-
-                if (!empty($value)) {
-                    Preview::insert([
-                        'article_id' => $id,
-                        'element' => $type,
-                        'value' => $value
-                    ]);
-                }
-            }
+            $this->push($request, $article->content, $id, function ($value) {
+                return Content::insert($value);
+            });
 
             DB::commit();
 
@@ -73,6 +49,42 @@ class CreateController extends Controller
         } catch (\Exception $exception) {
             DB::rollBack();
             return 'failed';
+        }
+    }
+
+    private function push($request, $statements, $id, $callback) {
+        foreach ($statements as $statement) {
+
+            $type = $statement->type;
+            if ($type === 'img') {
+                $value = $statement->id;
+
+                if ($request->hasFile($value)) {
+                    $value = $request->file($value)->store('articles');
+                } else {
+                    continue;
+                }
+            } else if ($type === 'video') {
+                $value = preg_replace(
+                    "/\s*[a-zA-Z\/\/:\.]*youtube.com\/watch\?v=([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
+                    "https://www.youtube.com/embed/$1",
+                    $request[$statement->id]);
+            } else {
+                $value = $statement->value;
+            }
+
+            if ($statement->id === 'preview-header' || $statement->id === 'content-header') {
+                if (empty($value))
+                    throw new \Exception();
+            }
+
+            if (!empty($value)) {
+                $callback([
+                    'article_id' => $id,
+                    'element' => $type,
+                    'value' => $value
+                ]);
+            }
         }
     }
 }
